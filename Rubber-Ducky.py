@@ -73,21 +73,21 @@ def generate_response(context, query) -> str:
         response_text = model.invoke(prompt).content
         st.session_state.memories.append({"role": "assistant", "content": response_text})
 
-    with st.chat_message("ducky", avatar='images\small-ducky.png'):
+    with st.chat_message("ducky", avatar='https://raw.githubusercontent.com/gladysmawarni/rubber-ducky/refs/heads/main/images/small-ducky.png'):
         st.write_stream(stream_data(response_text))
 
 
 ### ----------- APP -------------
 for memory in st.session_state.memories:
     if memory['role'] == 'assistant':
-        with st.chat_message(memory["role"], avatar='images\small-ducky.png'):
+        with st.chat_message(memory["role"], avatar='https://raw.githubusercontent.com/gladysmawarni/rubber-ducky/refs/heads/main/images/small-ducky.png'):
             st.write(memory["content"])
     else:
         with st.chat_message(memory["role"]):
             st.write(memory["content"])
 
 if st.session_state.state == None:
-    with st.chat_message("assistant", avatar='images\small-ducky.png'):
+    with st.chat_message("assistant", avatar='https://raw.githubusercontent.com/gladysmawarni/rubber-ducky/refs/heads/main/images/small-ducky.png'):
         intro =  """
                  Hi there! I’m Rubber Ducky, your assistant for the RAG and Generative AI course. I can help with topics such as:\n
                 ◦ RAG: Fundamentals, Unstructured Data, Multimodal, Agentic \n
